@@ -106,6 +106,10 @@
 
           class News extends React.Component {
             
+            state = {
+              counter: 0, 
+            }
+
             renderNews = () => { 
 
               const data = this.props.data
@@ -123,17 +127,23 @@
 
             }
 
+            handleCounter = (e) => {
+              e.preventDefault()
+              this.setState({counter: ++this.state.counter})
+            }
 
             render() {
 
               const data = this.props.data
+              const counter = this.state.counter
 
               return (
                 <div className="news">
                   {this.renderNews()}
                   {
-                    data.length ? <strong className={'news__count'}>Всего новостей: {data.length}</strong> : null
+                    data.length ? <strong onClick={this.handleCounter} className={'news__count'} >Всего новостей: {data.length}</strong> : null
                   }
+                  <p>Всего кликов: {counter}</p>
                 </div>
               )
             }
