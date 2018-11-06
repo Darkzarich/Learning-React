@@ -13,6 +13,7 @@
       .red {
         color: #FF0000;
       }
+      p
     </style>
 
   </head>
@@ -20,29 +21,27 @@
     <div id="root"></div>
      <script type="text/babel">
 
-          const App = () => {
-            return <p>Всем привет, я компонент App</p>
+          const News = () => {
+            return <p>К сожалению, новостей нет</p>
           }
 
-          class BigApp extends React.Component {
-            render() {
+          const Comments = () => {
+            return <p className='red'>Нет комментариев</p>
+          }
+
+
+          const App = () => {
               return (
                 <React.Fragment>
-                  <h1>Я компонент, BigApp</h1>
-                  <p className='red'>Компоненты можно вкладывать друг в друга.</p>
-                  <App/>
+                  <News />
+                  <Comments />
                 </React.Fragment> 
-                /* 
-                fragment is needed for reducing one div 
-                since components must be wrapped in div
-                */
-
               )
-            }
-          }      
+          }
+                
 
           ReactDOM.render(
-            <BigApp />,
+            <App />,
             document.getElementById('root')
           );
 
